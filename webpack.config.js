@@ -8,7 +8,8 @@ const config = {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'public/dist')
+      path: path.resolve(__dirname, 'public/dist'),
+      publicPath: 'public/'
     },
     devtool: 'source-map',
     devServer: {
@@ -32,7 +33,10 @@ const config = {
           use: ExtractTextPlugin.extract({
             use: [
               {
-                loader: 'css-loader', options: {minimize: true}
+                loader: 'css-loader',
+                options: {
+                  minimize: true
+                }
               },
               {
                 loader: 'postcss-loader', options: {
