@@ -1,0 +1,23 @@
+#nosotros {
+  display: flex;
+  align-items: center;
+  height: 52.125rem;
+  background-size: cover;
+  background: url('../images/bgnosotros.jpg') no-repeat center;
+  font-family: 'Montserrat', sans-serif;
+
+  h2 {
+    margin: 0;
+  }
+
+  h2, p {
+    color: #fefefe;
+  }
+
+  h1 {
+    color: #0050a2;
+    margin: 0;
+    font-weight: bolder;
+    font-size: 3rem;
+  }
+}

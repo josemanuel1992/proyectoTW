@@ -1,0 +1,25 @@
+.counter {
+  background-color: #2a3944;
+  padding-top: 2em;
+  padding-bottom: 2em;
+
+  &__container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    flex-basis: 0;
+    color: #fff;
+    border: 1px solid #008bc7;
+    height: 9.5rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
