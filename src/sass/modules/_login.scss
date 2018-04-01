@@ -1,0 +1,10 @@
+.app-login {
+  background-size: cover;
+  background: url('../images/home-app.jpg') no-repeat center;
+  height: 90vh;
+
+  &__inner {
+    color: #fff;
+    height: 100%;
+  }
+}
