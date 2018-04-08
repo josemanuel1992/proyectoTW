@@ -6,7 +6,7 @@
  * Time: 7:24 PM
  */
 
-require_once __DIR__  . '/../../../class/Medoo.php';
+require_once __DIR__  . '/../lib/Medoo.php';
 
 use Medoo\Medoo;
 
@@ -19,3 +19,5 @@ $db = new Medoo([
     'username' => 'tecnol43_principal',
     'password' => 'Principal.2018!'
 ]);
+
+header('Content-Type: text/html; charset=utf-8');

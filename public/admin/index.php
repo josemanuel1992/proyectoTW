@@ -6,22 +6,9 @@
  * Time: 6:34 PM
  */
 
-require_once __DIR__ . '/includes/_conn.php';
+require_once __DIR__ . '/../../config/config.php';
 
 $usuarios = $db->select('usuarios', '*');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_GET['editar'];
-
-    $response = [
-            'response' => 'OK'
-    ];
-
-    echo json_encode($response);
-
-    return;
-}
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,24 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">INDEX</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Usuarios</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Slider</span></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include_once 'includes/nav.php'; ?>
 </header>
 
 <section class="container">
@@ -72,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <tbody>
                 <?php foreach ($usuarios as $usuario) { ?>
                     <tr>
-                        <td><?php echo $usuario['nombre_usr'] ?></td>
-                        <td><?php echo $usuario['correo_usr'] ?></td>
-                        <td><?php echo $usuario['telefono_usr'] ?></td>
-                        <td><?php echo $usuario['status_usr'] ? 'Activo' : 'Inactivo' ?></td>
+                        <td><?= $usuario['nombre_usr'] ?></td>
+                        <td><?= $usuario['correo_usr'] ?></td>
+                        <td><?= $usuario['telefono_usr'] ?></td>
+                        <td><?= $usuario['status_usr'] ? 'Activo' : 'Inactivo' ?></td>
                         <td align="center">
-                            <a href="?editar=<?php echo $usuario['id_usr'] ?>" class="editar">Editar</a>
-                            <a href="?eliminar=<?php echo $usuario['id_usr'] ?>" class="eliminar">Eliminar</a>
+                            <a href="?editar=<?= $usuario['id_usr'] ?>" class="editar">Editar</a>
+                            <a href="?eliminar=<?= $usuario['id_usr'] ?>" class="eliminar">Eliminar</a>
                         </td>
                     </tr>
                 <?php } ?>
