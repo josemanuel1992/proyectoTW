@@ -10453,6 +10453,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 window.jQuery = _jquery2.default;
 
+var container = document.querySelector('.slider');
+var slides = container.children;
+var currentSlide = 0;
+
+setInterval(function () {
+  slides[currentSlide].style.opacity = 0;
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].style.opacity = 1;
+}, 4000);
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {

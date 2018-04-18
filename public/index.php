@@ -1,3 +1,13 @@
+<?php
+include_once __DIR__ . '/../config/config.php';
+
+$slides = $db->select('slides', [
+    'titulo',
+    'subtitulo',
+    'imagen',
+]);
+?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -50,8 +60,17 @@
 </nav>
 
 <main role="main">
-    <section id="slider">
-        <img src="images/slide1.jpg" alt="">
+    <section class="slider">
+        <?php foreach ($slides as $slide) { ?>
+        <div class="slider__container">
+            <div class="slider__text">
+                <h1><?= $slide['titulo'] ?></h1>
+                <h3><?= $slide['subtitulo'] ?></h3>
+            </div>
+            <div class="slider__background"
+                 style="background-image: url(images/slides/<?= $slide['imagen'] ?>);"></div>
+        </div>
+        <?php } ?>
     </section>
     <section id="nosotros">
         <div class="container">
@@ -263,7 +282,8 @@
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                                <path fill="#FFF" d="M0 0v20h20V0H0zm15.919 6.964c.006.131.009.263.009.395 0 4.036-3.071 8.689-8.689 8.689a8.65 8.65 0 0 1-4.682-1.372c.239.028.482.042.729.042a6.121 6.121 0 0 0 3.793-1.307 3.057 3.057 0 0 1-2.853-2.121 3.097 3.097 0 0 0 1.379-.052 3.056 3.056 0 0 1-2.45-2.994v-.039c.412.229.883.366 1.383.382a3.051 3.051 0 0 1-.944-4.077 8.666 8.666 0 0 0 6.294 3.191 3.054 3.054 0 0 1 5.204-2.786 6.1 6.1 0 0 0 1.939-.741 3.065 3.065 0 0 1-1.342 1.69 6.149 6.149 0 0 0 1.754-.48 6.205 6.205 0 0 1-1.524 1.58z"></path>
+                                <path fill="#FFF"
+                                      d="M0 0v20h20V0H0zm15.919 6.964c.006.131.009.263.009.395 0 4.036-3.071 8.689-8.689 8.689a8.65 8.65 0 0 1-4.682-1.372c.239.028.482.042.729.042a6.121 6.121 0 0 0 3.793-1.307 3.057 3.057 0 0 1-2.853-2.121 3.097 3.097 0 0 0 1.379-.052 3.056 3.056 0 0 1-2.45-2.994v-.039c.412.229.883.366 1.383.382a3.051 3.051 0 0 1-.944-4.077 8.666 8.666 0 0 0 6.294 3.191 3.054 3.054 0 0 1 5.204-2.786 6.1 6.1 0 0 0 1.939-.741 3.065 3.065 0 0 1-1.342 1.69 6.149 6.149 0 0 0 1.754-.48 6.205 6.205 0 0 1-1.524 1.58z"></path>
                             </svg>
                         </li>
                         <li class="list-inline-item">
