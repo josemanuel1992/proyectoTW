@@ -1,21 +1,19 @@
-<?php
-
-require_once __DIR__ . '/../../../config/config.php';
-
+<?php 
+require_once("_db.php");
 if(!isset($_POST['accion'])){
 	$accion ="";
 }else{
 	$accion = $_POST['accion'];
 }
-
 switch ($accion) {
-	case 'eliminarUsuario': eliminarUsuarios();
-	break;
-	
-	case 'insertar' : insertar();
+
+	case 'consultarServicio': consultarServicios();
 	break;
 
-	case 'consultar' : consultarUsuarios();
+	case 'eliminarServicio': eliminarServicios();
+	break;
+
+	case 'insertar': insertar();
 	break;
 
 	case 'individual' : individual();
@@ -23,53 +21,47 @@ switch ($accion) {
 
 	case 'editar' : editar();
 	break;
+}
 
-	default:
-		# code...
-	break;
+function consultarServicios(){
+	global $db;
+	$servicios = $db->select("servicios","*");
+	echo json_encode($servicios);
+}
+function eliminarServicios(){
+	global $db;
+	extract($_POST);
+	$servicios = $db->select("servicios",["id_ser" => $servicio]);
+	echo "Se ha eliminado el servicio correctamente";
+}
+function insertar(){
+	global $db;
+	extract($_POST);
+	$db->insert("servicios",[
+		"suc_ser" => $sucursales,
+		"exp_ser" => $exp,
+		"cl_ser" => $clientes,
+		"emp_ser" => $emp
+	]);
+	$servicio = $db->id();
+	echo "Se ha registrado correctamente el servicio con ID ".$servicio;
 }
 function editar(){
 	global $db;
 	print_r($_POST);
 	extract($_POST);
-	$db->update("usuarios",[
-		"nombre_usr" => $nombre,
-		"correo_usr" => $correo,
-		"telefono_usr" => $telefono,
-		"password_usr" => $password
-	], ["id_usr" => $id]);
-	
-	echo "Se ha actualizado correctamente el usuario con ID ".$id;
-}
-function insertar(){
-	global $db;
-	extract($_POST);
-	$db->insert("usuarios",[
-		"nombre_usr" => $nombre,
-		"correo_usr" => $correo,
-		"telefono_usr" => $telefono,
-		"password_usr" => $password
-	]);
-	$usuario = $db->id();
-	echo "Se ha registrado correctamente el usuario con ID ".$usuario;
-}
-function consultarUsuarios(){
-	global $db;
-	$usuarios = $db->select("usuarios","*");
-	echo json_encode($usuarios);
+	$db->update("servicios",[
+		"suc_ser" => $sucursales,
+		"exp_ser" => $exp,
+		"cl_ser" => $clientes,
+		"emp_ser" => $emp
+	], ["id_ser" => $id]);
+	echo "Se ha actualizado correctamente el servicio con ID ".$id;
 }
 function individual(){
 	global $db;
 	extract($_POST);
-	$usuarios = $db->get("usuarios","*",[
-		"id_usr" => $id
-	]);
-	echo json_encode($usuarios);
-}
-function eliminarUsuarios(){
-	global $db;
-	extract($_POST);
-	$usuarios = $db->delete("usuarios",["id_usr" => $usuario]);
-	echo "Se ha eliminado el usuario correctamente";	
+	$servicios = $db->get("servicios","*",["id_ser" => $id]);
+	echo json_encode($servicios);
 }
 ?>
