@@ -5,6 +5,8 @@ $slides = $db->select('slides', [
     'titulo',
     'subtitulo',
     'imagen',
+], [
+    'ORDER' => ['id' => 'DESC']
 ]);
 ?>
 
@@ -62,14 +64,14 @@ $slides = $db->select('slides', [
 <main role="main">
     <section class="slider">
         <?php foreach ($slides as $slide) { ?>
-        <div class="slider__container">
-            <div class="slider__text">
-                <h1><?= $slide['titulo'] ?></h1>
-                <h3><?= $slide['subtitulo'] ?></h3>
+            <div class="slider__container">
+                <div class="slider__text">
+                    <h1><?= $slide['titulo'] ?></h1>
+                    <h3><?= $slide['subtitulo'] ?></h3>
+                </div>
+                <div class="slider__background"
+                     style="background-image: url(images/slides/<?= $slide['imagen'] ?>);"></div>
             </div>
-            <div class="slider__background"
-                 style="background-image: url(images/slides/<?= $slide['imagen'] ?>);"></div>
-        </div>
         <?php } ?>
     </section>
     <section id="nosotros">
