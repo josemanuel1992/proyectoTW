@@ -10457,11 +10457,13 @@ var container = document.querySelector('.slider');
 var slides = container.children;
 var currentSlide = 0;
 
-setInterval(function () {
-  slides[currentSlide].style.opacity = 0;
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].style.opacity = 1;
-}, 4000);
+if (slides.length) {
+  setInterval(function () {
+    slides[currentSlide].style.opacity = 0;
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].style.opacity = 1;
+  }, 4000);
+}
 
 /***/ }),
 /* 2 */

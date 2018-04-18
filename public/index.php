@@ -63,6 +63,16 @@ $slides = $db->select('slides', [
 
 <main role="main">
     <section class="slider">
+        <?php if(!count($slides)) { ?>
+            <div class="slider__container">
+                <div class="slider__text">
+                    <h1>Placeholder de gatitos</h1>
+                    <h3>Subtitulo placeholder igual que el de arriba</h3>
+                </div>
+                <div class="slider__background"
+                     style="background-image: url(http://placekitten.com/g/1920/1080);"></div>
+            </div>
+        <?php } ?>
         <?php foreach ($slides as $slide) { ?>
             <div class="slider__container">
                 <div class="slider__text">
