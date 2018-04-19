@@ -172,14 +172,14 @@ $promos = $db->select('promos', '*');
             </div>
         </div>
     </section>
-    <?php foreach ($promos as $promos) { ?>
-    <section id="contenedorAPP" class="app-login d-flex justify-content-around ca" style="background-image: url(admin/img/subida/<?= $promos['imagen_pro'] ?>);">
+    <?php foreach ($promos as $promo) { ?>
+    <section id="contenedorAPP" class="app-login d-flex justify-content-around ca" style="background-image: url(admin/img/subida/<?= $promo['imagen_pro'] ?>);">
               <div >
                 <div >
                     <div class="col-sm-12">
-                        <h1 class="ram1"><?= $promos['titulo_pro'] ?></h1>
-                        <h4 class="ram4"><?= $promos['descripcion_pro'] ?></h4>
-                        <a href="<?= $promos['link_pro'] ?>" class="btn btn-warning">VER MÁS</a>
+                        <h1 class="ram1"><?= $promo['titulo_pro'] ?></h1>
+                        <h4 class="ram4"><?= $promo['descripcion_pro'] ?></h4>
+                        <a href="<?= $promo['link_pro'] ?>" class="btn btn-warning">VER MÁS</a>
                     </div> </div></div>
     </section>
     <?php } ?>
