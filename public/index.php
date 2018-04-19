@@ -347,6 +347,110 @@ $servicios = $db->select('servicios', '*');
         <p class="text-warning no-margin">Copyright - TS & DE LA GARZA Consultores</p>
     </div>
 </footer>
+    <section class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<form action="#" method="POST" id="frmContactanos">
+					<h3>CONTACTANOS</h3>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="nombre">Nombre</label>
+								<input type="text" name="nombre" id="nombre" class="form-control">
+							</div>
+                             <div class="form-group">
+								<label for="telefono">Teléfono</label>
+								<input type="tel" name="telefono" id="telefono" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="correo">Correo Electrónico</label>
+								<input type="email" name="correo" id="correo" class="form-control">
+							</div>
+                             
+                             <div class="form-group">
+                                   <label for="comentario">Comentario:</label>
+                                   <input type="comentario" name="comentario" id="comentario" class="form-control">
+                                   
+                                  </div>
+
+								<!-- <div class="form-group">
+                                   <label for="comentario">Comentario:</label>
+                                   <textarea type="comentario" name="comentario"  id="comentario" class="form-control" ></textarea>
+                                  </div>  -->
+
+							<div class="form-group">
+								<button type="button" id="btnGuardar" class="btn btn-primary" data-accion="guardar">Guardar</button>
+							</div>	
+						</div>
+						
+						<div class="col-sm-6">
+							
+						</div>
+					</div>
+				</div>
+			</form>	
+		</div>
+	</section>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function(){
+			listar();
+		});
+		
+
+		$("#btnGuardar").click(function(){
+			let accion = $(this).data('accion');
+			let objeto = {};
+			let id; 
+			if(accion == "guardar"){	
+				objeto['accion'] = "insertar";
+			}else if(accion == "editar"){
+				id = $(this).data('id');
+				objeto['accion'] = "editar";
+				objeto['id'] = id;
+			}
+			let bandera = 1;
+			$("#frmContactanos input").each(function(){
+				$(this).removeClass('error');
+				if($(this).val() == ""){
+					$(this).addClass('error').focus();
+					console.log($(this).attr('name'));
+					bandera = 0;
+					return false;
+				}
+				objeto[$(this).attr('name')] = $(this).val();				
+			});
+			if(bandera != 0){
+				console.log(objeto);
+				$.post( "includes/_funciones.php",objeto, function(data) {
+					if(id != undefined){
+						$("#btnGuardar").data('accion','guardar').text('Guardar').removeData('id');
+						$("#frmContactanos input").each(function(){
+							$(this).val('');
+						});
+					}
+					listar();
+				});
+			}
+		});
+		$("#frmContactanos input").keypress(function(){
+			$(this).removeClass('error');
+		});
+		function listar(){
+			let objeto = {
+				"accion" : "consultar"
+			};	
+			$("table tbody").html('');
+			$.post( "includes/_funciones.php",objeto, function(data) {
+				let datos = JSON.parse(data);
+				datos.forEach(function(e){
+					construyeFila(e.nombre, e.telefono, e.correo, e.comentario, e.id_nombre);
+				})
+			});
+		}
+		
+	</script>
 <script src="dist/app.bundle.js" type="text/javascript"></script>
 </body>
 </html>
