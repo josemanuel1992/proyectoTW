@@ -12,9 +12,11 @@ $sucursales = consultarSucursales(); */
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<li class="nav-item <?= ($currentPage === 'sucursales') ? 'active' : '' ?>">
-                <a class="nav-link" href="sucursales.php">Sucursales</span></a>
-        </li>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+-		<ul class="navbar-nav mr-auto">
+-			<li class="nav-item active"><a href="sucursales.php" class="nav-link">Sucursales</a></li>
+-		</ul>
+-	</nav>
 	<section class="container">
 		<div class="row">
 			<div class="col-sm-12">
