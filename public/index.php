@@ -1,6 +1,11 @@
 <?php
 include_once __DIR__ . '/../config/config.php';
 
+$slides = $db->select('slides', [
+    'titulo',
+    'subtitulo',
+    'imagen',
+
 $servicios = $db->select('servicios', [
     'suc_ser',
     'exp_ser',
@@ -106,28 +111,6 @@ $servicios = $db->select('servicios', [
         </div>
     </section>
   <section id="contenedorHistorial">
-    <?php if(!count($servicios)) { ?>
-    <div class="container">
-      <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link " href="#"><h1 class="text-center">5</h1><br/>
-              <p>Sucursales</p></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h1 class="text-center">10</h1><br/>
-              <p>Años de experiencia</p></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h1 class="text-center">1,080</h1><br/>
-              <p>Clientes Satisfechos</p></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#"><h1 class="text-center">253</h1><br/>
-              <p>Empleados de TS</p></a>
-          </li>
-      </ul>
-    </div>
-    <?php } ?>
     <?php foreach ($servicios as $servicio) { ?>
           <div class="container">
       <ul class="nav justify-content-center">
