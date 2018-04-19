@@ -15,6 +15,10 @@
             <li class="nav-item <?= ($currentPage === 'nosotros') ? 'active' : '' ?>">
                 <a class="nav-link" href="nosotros.php">Nosotros</span></a>
             </li>
+            <li class="nav-item <?= ($currentPage === 'promos') ? 'active' : '' ?>">
+                <a class="nav-link" href="promos.php">Promos</span></a>
+            </li>
+
             <li class="nav-item dropdown <?= $currentPage === 'slides' ? 'active' : '' ?>">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Slides
