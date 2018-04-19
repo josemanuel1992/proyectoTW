@@ -8,6 +8,7 @@ $slides = $db->select('slides', [
 ], [
     'ORDER' => ['id' => 'DESC']
 ]);
+$promos = $db->select('promos', '*');
 ?>
 
 <!doctype html>
@@ -171,12 +172,16 @@ $slides = $db->select('slides', [
             </div>
         </div>
     </section>
-    <section id="contenedorAPP" class="app-login d-flex justify-content-around">
-        <div class="app-login__inner d-flex flex-column align-content-center align-items-center justify-content-center text-center">
-            <h1>CONÉCTATE A NUESTRA ACCOUNTING APP</h1>
-            <h4>Ingresa a nuestra aplicación para obtener tu documentación</h4>
-            <a href="#" class="btn btn-warning">VER MÁS</a>
-        </div>
+    <?php foreach ($promos as $promos) { ?>
+    <section id="contenedorAPP" class="app-login d-flex justify-content-around ca" style="background-image: url(admin/img/subida/<?= $promos['imagen_pro'] ?>);">
+              <div >
+                <div >
+                    <div class="col-sm-12">
+                        <h1 class="ram1"><?= $promos['titulo_pro'] ?></h1>
+                        <h4 class="ram4"><?= $promos['descripcion_pro'] ?></h4>
+                        <a href="<?= $promos['link_pro'] ?>" class="btn btn-warning">VER MÁS</a>                        
+                    </div> </div></div>          
+        <?php } ?>
     </section>
     <section class="phones">
         <div class="container">

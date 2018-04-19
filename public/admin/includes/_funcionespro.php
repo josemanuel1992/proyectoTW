@@ -40,7 +40,7 @@ function insertar(){
 		"titulo_pro" => $titulo,
 		"descripcion_pro" => $descripcion,
 		"link_pro" => $link,
-		"imagen_pro" => $imagen,
+		"imagen_pro" => substr($imagenOculta, 12),
 		"status_pro" => $status
 	]);
 	$promo = $db->id();
@@ -67,7 +67,7 @@ function editar(){
 		"titulo_pro" => $titulo,
 		"descripcion_pro" => $descripcion,
 		"link_pro" => $link,
-		"imagen_pro" => $imagen,
+		"imagen_pro" => substr($imagenOculta, 12),
 		"status_pro" => $status
 	], ["id_pro" => $id]);
 	
