@@ -8,6 +8,14 @@ $slides = $db->select('slides', [
 ], [
     'ORDER' => ['id' => 'DESC']
 ]);
+$nosotros = $db->select('nosotros', [
+    'titulo_nosotrs',
+    'subtitulo_nosotrs',
+    'text_nosotrs',
+    'imagen_nosotrs',
+], [
+    'ORDER' => ['id' => 'DESC']
+]);
 ?>
 
 <!doctype html>
@@ -85,24 +93,24 @@ $slides = $db->select('slides', [
         <?php } ?>
     </section>
     <section id="nosotros">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9">
-                    <h2>Nosotros</h2>
-                    <h1>CREAMOS<br/>SOLUCIONES</h1>
-                    <h2>a tus necesidades</h2>
-                    <br>
-                    <p>El éxito de un negocio es dar un excelente servicio o producto a todos nuestros clientes. Toda
-                        empresa con éxito va de la mano con una Asesoría Contable, Fiscal y Financiera; es por eso
-                        sometemos a su consideración nuestra propuesta de servicios proponiendo el mejor esquema
-                        diseñado para atender sus necesidades, buscando rentabilidad, legalidad y profesionalismo.</p>
-                    <p>Nuestro equipo de trabajo reúne el conocimiento y la experiencia de varios años de trabajo en
-                        diversas empresas que nos han permitido unir esfuerzos y desarrollar los esquemas de control
-                        contable, fiscal y legal que harán más eficiente a su empresa.
-                    </p>
+
+        <?php foreach ($nosotros as $nosotro) { ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h2><?= $nosotro['titulo_nosotrs'] ?></h2>
+                        <h1>CREAMOS<br/>SOLUCIONES</h1>
+                        <h2><?= $nosotro['subtitulo_nosotrs'] ?></h2>
+                        <br>
+                        <p><?= $nosotro['texto_nosotrs'] ?></p>
+                    </div>
+                    <div class="slider__background"
+                         style="background-image: url(admin/img/subida<?= $nosotro['imagen_nosotrs'] ?>);"></div>
                 </div>
             </div>
-        </div>
+
+        <?php } ?>
+
     </section>
     <section class="counter">
         <div class="container">
