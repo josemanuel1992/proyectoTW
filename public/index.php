@@ -171,7 +171,7 @@ $nosotros = $db->select('nosotros', '*');
             </div>
         </div>
     </section>
-    <section class="app-login d-flex justify-content-around">
+    <section id="contenedorAPP" class="app-login d-flex justify-content-around">
         <div class="app-login__inner d-flex flex-column align-content-center align-items-center justify-content-center text-center">
             <h1>CONÉCTATE A NUESTRA ACCOUNTING APP</h1>
             <h4>Ingresa a nuestra aplicación para obtener tu documentación</h4>
