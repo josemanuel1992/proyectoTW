@@ -6,21 +6,6 @@ if(!isset($_POST['accion'])){
 	$accion = $_POST['accion'];
 }
 switch ($accion) {
-	case 'eliminarUsuario': eliminarUsuarios();
-	break;
-
-	case 'insertarUsuario': insertarUsuarios();
-	break;
-
-	case 'consultarUsuario': consultarUsuarios();
-	break;
-
-	case 'individualUsuario': individualUsuarios();
-	break;
-
-	case 'editarUsuario': editarUsuarios();
-	break;
-
 	case 'eliminarSucursal': eliminarSucursales();
 	break;
 
@@ -35,46 +20,6 @@ switch ($accion) {
 
 	case 'editarSucursal': editarSucursales();
 	break;
-}
-function insertarUsuarios(){
-	global $db;
-	extract($_POST);
-	$db->insert("usuarios",[
-		"nombre_usr" => $nombre,
-		"correo_usr" => $correo,
-		"telefono_usr" => $telefono,
-		"password_usr" => $password
-	]);
-	$usuario = $db->id();
-	echo "Se ha registrado correctamente el usuario ".$nombre." con el ID ".$usuario;
-}
-function consultarUsuarios(){
-	global $db;
-	$usuarios = $db->select("usuarios","*");
-	echo json_encode($usuarios);
-}
-function eliminarUsuarios(){
-	global $db;
-	extract($_POST);
-	$usuarios = $db->delete("usuarios",["id_usr" => $usuario]);
-	echo "Se ha eliminado el usuario correctamente";	
-}
-function individualUsuarios(){
-	global $db;
-	extract($_POST);
-	$usuarios = $db->get("usuarios","*",["id_usr" => $id]);
-	echo json_encode($usuarios);
-}
-function editarUsuarios(){
-	global $db;
-	//print_r($_POST);
-	extract($_POST);
-	$db->update("usuarios",[
-		"nombre_usr" => $nombre,
-		"correo_usr" => $correo,
-		"telefono_usr" => $telefono,
-		"password_usr" => $password], ["id_usr" => $id]);
-	echo "Se ha actualizado correctamente el usuario con el ID ".$id;
 }
 function insertarSucursales(){
 	global $db;
