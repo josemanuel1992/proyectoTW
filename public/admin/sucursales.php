@@ -12,11 +12,11 @@ $sucursales = consultarSucursales(); */
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
--		<ul class="navbar-nav mr-auto">
--			<li class="nav-item active"><a href="sucursales.php" class="nav-link">Sucursales</a></li>
--		</ul>
--	</nav>
+<div>
+    <nav>
+        <?php include("includes/nav.php"); ?>
+    </nav>
+</div>
 	<section class="container">
 		<div class="row">
 			<div class="col-sm-12">
