@@ -8,14 +8,8 @@ $slides = $db->select('slides', [
 ], [
     'ORDER' => ['id' => 'DESC']
 ]);
-$nosotros = $db->select('nosotros', [
-    'titulo_nosotrs',
-    'subtitulo_nosotrs',
-    'text_nosotrs',
-    'imagen_nosotrs',
-], [
-    'ORDER' => ['id' => 'DESC']
-]);
+
+$nosotros = $db->select('nosotros', '*');
 ?>
 
 <!doctype html>
@@ -71,7 +65,7 @@ $nosotros = $db->select('nosotros', [
 
 <main role="main">
     <section class="slider">
-        <?php if(!count($slides)) { ?>
+        <?php if (!count($slides)) { ?>
             <div class="slider__container">
                 <div class="slider__text">
                     <h1>Placeholder de gatitos</h1>
@@ -92,20 +86,18 @@ $nosotros = $db->select('nosotros', [
             </div>
         <?php } ?>
     </section>
-    <section id="nosotros">
+    <section class="slider">
 
         <?php foreach ($nosotros as $nosotro) { ?>
-            <div class="container">
-                <div class="row">
+            <div class="slider__container">
+                <div class="slider__text">
                     <div class="col-sm-9">
-                        <h2><?= $nosotro['titulo_nosotrs'] ?></h2>
-                        <h1>CREAMOS<br/>SOLUCIONES</h1>
-                        <h2><?= $nosotro['subtitulo_nosotrs'] ?></h2>
-                        <br>
+                        <h1><?= $nosotro['titulo_nosotrs'] ?></h1>
+                        <h3><?= $nosotro['subtitulo_nosotrs'] ?></h3>
                         <p><?= $nosotro['texto_nosotrs'] ?></p>
                     </div>
                     <div class="slider__background"
-                         style="background-image: url(admin/img/subida<?= $nosotro['imagen_nosotrs'] ?>);"></div>
+                         style="background-image: url(admin/img/subida/<?= $nosotro['imagen_nosotrs'] ?>);"></div>
                 </div>
             </div>
 

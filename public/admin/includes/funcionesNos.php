@@ -45,7 +45,7 @@ function insertarNosotros(){
         "titulo_nosotrs" => $titulo,
         "subtitulo_nosotrs" => $subtitulo,
         "texto_nosotrs" => $texto,
-        "imagen_nosotrs" => $imagenOculta
+        "imagen_nosotrs" => substr($imagenOculta, 12)
     ]);
     $titul = $db->id();
     echo "Se ha añadido correctamente el apartado ".$titul;
