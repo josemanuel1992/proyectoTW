@@ -12,12 +12,11 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"><a href="nosotros.php" class="nav-link">Nosotros</a></li>
-        <li class="nav-item active"><a href="slider.php" class="nav-link">Slider</a></li>
-    </ul>
-</nav>
+<div>
+    <nav>
+        <?php include("includes/nav.php"); ?>
+    </nav>
+</div>
 <section class="container">
     <div class="row">
         <div class="col-sm-12">

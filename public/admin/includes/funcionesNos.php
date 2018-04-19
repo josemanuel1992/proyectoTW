@@ -1,5 +1,5 @@
 <?php
-require_once("_db.php");
+require_once __DIR__ . '/../../../config/config.php';
 if(!isset($_POST['accion'])){
     $accion ="";
 }else{
