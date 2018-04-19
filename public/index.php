@@ -11,6 +11,7 @@ $slides = $db->select('slides', [
 
 $nosotros = $db->select('nosotros', '*');
 $promos = $db->select('promos', '*');
+$servicios = $db->select('servicios', '*');
 ?>
 
 <!doctype html>
@@ -105,30 +106,30 @@ $promos = $db->select('promos', '*');
         <?php } ?>
 
     </section>
-    <section class="counter">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 counter__container">
-                    <div class="counter__item">
-                        <h1>1</h1>
-                        <p>Ciudades</p>
-                    </div>
-                    <div class="counter__item">
-                        <h1>1</h1>
-                        <p>Años de experiencia</p>
-                    </div>
-                    <div class="counter__item">
-                        <h1>1</h1>
-                        <p>Clientes Satisfechos</p>
-                    </div>
-                    <div class="counter__item">
-                        <h1>1</h1>
-                        <p>Servicios</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="contenedorHistorial">
+    <?php foreach ($servicios as $servicio) { ?>
+          <div class="container">
+      <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link " href="#"><h1 class="text-center"><?= $servicio['suc_ser'] ?></h1><br/>
+              <p>Sucursales</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><h1 class="text-center"><?= $servicio['exp_ser'] ?></h1><br/>
+              <p>Años de experiencia</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><h1 class="text-center"><?= $servicio['cl_ser'] ?></h1><br/>
+              <p>Clientes Satisfechos</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#"><h1 class="text-center"><?= $servicio['emp_ser'] ?></h1><br/>
+              <p>Empleados de TS</p></a>
+          </li>
+      </ul>
+    </div>
+    <?php } ?>
+  </section>
     <section class="services bottom-space">
         <div class="container">
             <h1 class="vertical-space text-center font-weight-normal">NUESTROS SERVICIOS</h1>
