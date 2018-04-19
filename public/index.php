@@ -5,15 +5,10 @@ $slides = $db->select('slides', [
     'titulo',
     'subtitulo',
     'imagen',
-
-$servicios = $db->select('servicios', [
-    'suc_ser',
-    'exp_ser',
-    'cl_ser',
-    'emp_ser',
 ], [
     'ORDER' => ['id' => 'DESC']
 ]);
+$servicios = $db->select('servicios', '*');
 ?>
 
 <!doctype html>
