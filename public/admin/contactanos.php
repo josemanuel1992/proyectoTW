@@ -87,7 +87,7 @@
 				"accion" : "eliminarContactanos",
 				"contactanos" : id
 			};
-			$.post( "includes/_funciones.php",obj, function(data) {
+			$.post( "includes/_funciones1.php",obj, function(data) {
 				alert(data);
 				listar();
 			});
@@ -100,7 +100,7 @@
 				"accion": "individual",
 				"id" : id
 			}
-			$.post( "includes/_funciones.php",obj, function(data) {
+			$.post( "includes/_funciones1.php",obj, function(data) {
 				$("#nombre").val(data.nombre);
 				$("#telefono").val(data.telefono);
 				$("#correo").val(data.correo);
@@ -133,7 +133,7 @@
 			});
 			if(bandera != 0){
 				console.log(objeto);
-				$.post( "includes/_funciones.php",objeto, function(data) {
+				$.post( "includes/_funciones1.php",objeto, function(data) {
 					if(id != undefined){
 						$("#btnGuardar").data('accion','guardar').text('Guardar').removeData('id');
 						$("#frmContactanos input").each(function(){
@@ -152,7 +152,7 @@
 				"accion" : "consultar"
 			};	
 			$("table tbody").html('');
-			$.post( "includes/_funciones.php",objeto, function(data) {
+			$.post( "includes/_funciones1.php",objeto, function(data) {
 				let datos = JSON.parse(data);
 				datos.forEach(function(e){
 					construyeFila(e.nombre, e.telefono, e.correo, e.comentario, e.id_nombre);
